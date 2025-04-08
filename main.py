@@ -1,5 +1,8 @@
 import sqlite3
 from datetime import datetime
+from rich.console import Console
+from rich.table import Table
+import os
 
 def create_entry():
     today = datetime.now().strftime("%Y-%m-%d")
@@ -18,11 +21,6 @@ def create_entry():
     conn.commit()
     conn.close()
     print("Journal entry saved successfully!")
-
-create_entry()
-#rich formatting
-from rich.console import Console
-from rich.table import Table
 
 def show_entries():
     conn = sqlite3.connect("journal.db")
@@ -44,17 +42,24 @@ def show_entries():
 
     console.print(table)
 
-show_entries()
-#store repeated mistakes daily
 def store_mistake(mistake):
     conn = sqlite3.connect("journal.db")
     cursor = conn.cursor()
     cursor.execute("INSERT OR IGNORE INTO mistakes (mistake) VALUES (?)", (mistake,))
     conn.commit()
     conn.close()
-#store mistakes
-if mistakes:
-    store_mistake(mistakes)
+
+def check_mistake_repetition(new_mistake):
+    conn = sqlite3.connect("journal.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT mistake, count FROM mistakes")
+    mistakes = cursor.fetchall()
+    conn.close()
+
+    for mistake, count in mistakes:
+        if mistake == new_mistake and count > 2:  # Warn if repeated more than twice
+            print(f"[ALERT] You've repeated this mistake {count} times! Time to make a change!")
+
 def export_to_markdown():
     with open("journal_export.md", "w") as file:
         conn = sqlite3.connect("journal.db")
@@ -73,44 +78,6 @@ def export_to_markdown():
 
     print("Journal exported as Markdown!")
 
-export_to_markdown()
-
-mistakes = input("Any mistakes to note? ").strip() or "None"
-
-
-def store_mistake(mistake):
-    conn = sqlite3.connect("journal.db")
-    cursor = conn.cursor()
-    
-    # Check if mistake already exists
-    cursor.execute("SELECT count FROM mistakes WHERE mistake = ?", (mistake,))
-    result = cursor.fetchone()
-    
-    if result:
-        # If mistake exists, increment the count
-        new_count = result[0] + 1
-        cursor.execute("UPDATE mistakes SET count = ? WHERE mistake = ?", (new_count, mistake))
-    else:
-        # If mistake does not exist, add it with count = 1
-        cursor.execute("INSERT INTO mistakes (mistake, count) VALUES (?, ?)", (mistake, 1))
-    
-    conn.commit()
-    conn.close()
-
-def check_mistake_repetition(new_mistake):
-    conn = sqlite3.connect("journal.db")
-    cursor = conn.cursor()
-    cursor.execute("SELECT mistake, count FROM mistakes")
-    mistakes = cursor.fetchall()
-    conn.close()
-
-    for mistake, count in mistakes:
-        if mistake == new_mistake and count > 2:  # Warn if repeated more than twice
-            print(f"[ALERT] You've repeated this mistake {count} times! Time to make a change!")
-
-if mistakes:
-    store_mistake(mistakes)
-    check_mistake_repetition(mistakes)
 def search_entries(keyword):
     conn = sqlite3.connect("journal.db")
     cursor = conn.cursor()
@@ -125,7 +92,31 @@ def search_entries(keyword):
             print(f"\nDate: {entry[1]}\nTitle: {entry[2]}\nDescription: {entry[3]}\n")
     else:
         print("No entries found for that keyword.")
+
+def backup_to_github():
+    os.system("git add .")
+    os.system('git commit -m "Automated journal backup"')
+    os.system("git push origin main")
+    print("Journal backup completed!")
+
+# Call the functions in order
+create_entry()
+show_entries()
+
+# Handle mistakes logic
+mistakes = input("Any mistakes to note? ").strip() or "None"
+store_mistake(mistakes)
+check_mistake_repetition(mistakes)
+
+# Export to markdown
+export_to_markdown()
+
+# Search functionality
 search_query = input("Search your journal (leave empty to skip): ")
 if search_query:
     search_entries(search_query)
 
+# Backup to GitHub
+backup = input("Do you want to back up your journal to GitHub? (y/n): ").strip().lower()
+if backup == 'y':
+    backup_to_github()
