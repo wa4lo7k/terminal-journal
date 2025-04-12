@@ -133,7 +133,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## 📧 Contact
 
-For questions or feedback, please reach out to [your-email@example.com](mailto:wa4lo7k@proton.com).
+For questions or feedback, please reach out to [wa4lo7k@proton.me](mailto:wa4lo7k@proton.com).
 
 ---
 
@@ -148,12 +148,12 @@ For questions or feedback, please reach out to [your-email@example.com](mailto:w
 ## 🖼️ Screenshots
 
 ### Main Menu
-![Main Menu](/images/main-menu.jpg)
+![Main Menu](/images/main-menu.png)
 
 ### Calendar View
-![Calendar View](/images/calendar-view.jpg)
+![Calendar View](/images/calendar-view.png)
 
 ### Create Entry
-![Create Entry](/images/create-entry.jpg)
+![Create Entry](/images/create-entry.png)
 
 ---
