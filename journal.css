@@ -1,0 +1,438 @@
+/* Base screen layout */
+Screen {
+    layout: grid;
+    grid-size: 1;
+    grid-rows: 1fr 8fr 1fr;
+    padding: 0;
+    background: #1a1a1a;
+}
+
+#main-container {
+    width: 100%;
+    height: 100%;
+    layout: vertical;
+    align: center top;
+    padding: 2;
+}
+
+#calendar-container {
+    width: 100%;
+    max-width: 80;
+    height: auto;
+    layout: vertical;
+    align: center top;
+    background: #2a2a2a;
+    border: none;
+    margin: 1 2;
+}
+
+/* Month header */
+.month-header {
+    width: 100%;
+    height: 5;
+    background: #4a4a4a;
+    color: #ffffff;
+    content-align: center middle;
+    text-style: bold;
+    padding: 1;
+    margin-bottom: 1;
+}
+
+/* Calendar styles */
+CalendarWidget {
+    layout: grid;
+    grid-size: 7;
+    grid-rows: 7;
+    grid-columns: 7;
+    grid-gutter: 1;
+    padding: 1;
+    width: 100%;
+    height: auto;
+    background: #1a1a1a;
+}
+
+.calendar-header {
+    width: 1fr;
+    background: #3a3a3a;
+    color: #ffffff;
+    text-align: center;
+    text-style: bold;
+    min-height: 3;
+    padding: 1 0;
+}
+
+.calendar-day {
+    background: #1a1a1a;
+    border: none;
+    min-width: 6;
+    min-height: 3;
+    margin: 0;
+    text-align: center;
+}
+
+.calendar-day:hover {
+    background: #4a4a4a;
+    color: #ffffff;
+}
+
+.calendar-day.empty {
+    background: transparent;
+}
+
+.calendar-day.today {
+    background: #2d5a27;
+    color: #ffffff;
+    text-style: bold;
+}
+
+.calendar-day.has-entry {
+    border: tall #4a4a4a;
+    background: #3a3a3a;
+}
+
+.calendar-day.disabled {
+    background: #2a2a2a;
+    color: #888888;
+    text-style: dim;
+}
+
+.calendar-day.disabled:hover {
+    background: #2a2a2a;
+    color: #888888;
+}
+
+.calendar-day.future {
+    background: #2a3a3a;
+    color: #aaaaaa;
+    text-style: italic;
+}
+
+.calendar-day.past {
+    background: #2a2a2a;
+}
+
+.calendar-day.past.has-entry {
+    background: #3a3a3a;
+}
+
+#calendar-controls {
+    width: 100%;
+    height: 3;
+    layout: horizontal;
+    content-align: center middle;
+    background: transparent;
+    margin-top: 1;
+}
+
+#calendar-controls Button {
+    background: #4a4a4a;
+    width: 3;
+    height: 3;
+    content-align: center middle;
+    margin: 0 1;
+}
+
+#calendar-controls Button:hover {
+    background: #5a5a5a;
+}
+
+/* Preview container */
+#preview-container {
+    margin: 2 0;
+    height: auto;
+    min-height: 10;
+    width: 100%;
+    max-width: 80;
+    padding: 1;
+    background: #2a2a2a;
+}
+
+/* Form styles */
+#entry-form {
+    width: 100%;
+    height: auto;
+    padding: 1;
+}
+
+#entry-form Label {
+    width: 100%;
+    padding: 1;
+    text-style: bold;
+}
+
+#entry-form Input,
+#entry-form TextArea {
+    width: 100%;
+    margin-bottom: 1;
+}
+
+/* Search results styles */
+#search-results {
+    width: 100%;
+    height: 1fr;
+    border: solid #3a3a3a;
+}
+
+/* Mistakes display styles */
+#mistakes-display {
+    width: 100%;
+    height: auto;
+    padding: 1;
+}
+
+/* Modal styles */
+.modal-content {
+    background: #2a2a2a;
+    padding: 2;
+    border: tall #3a3a3a;
+    width: 80%;
+    height: 80%;
+    margin: 2 2;
+}
+
+.modal-content Label {
+    margin: 1 0;
+}
+
+.modal-content Input, .modal-content TextArea {
+    margin: 1 0;
+}
+
+.modal-content TextArea {
+    height: 5;
+}
+
+.button-container {
+    layout: horizontal;
+    align: right middle;
+    height: auto;
+    margin-top: 2;
+    padding: 1;
+}
+
+.button-container Button {
+    margin-left: 1;
+    min-width: 16;
+}
+
+.screen-title {
+    text-align: center;
+    padding: 1;
+    background: #4a4a4a;
+    color: #ffffff;
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+Label {
+    margin-top: 1;
+    margin-bottom: 1;
+    color: #aaaaaa;
+}
+
+Input {
+    width: 100%;
+    margin-bottom: 1;
+}
+
+TextArea {
+    height: 5;
+    border: solid $primary;
+    background: $boost;
+    margin: 1 0;
+    padding: 0 1;
+}
+
+TextArea:focus {
+    border: double $secondary;
+}
+
+#description, #improvements, #setbacks, #mistakes {
+    height: 10;
+    border: solid $primary;
+    background: $boost;
+    margin: 1 0;
+    padding: 0 1;
+    overflow: auto;
+}
+
+#description:focus, #improvements:focus, #setbacks:focus, #mistakes:focus {
+    border: double $secondary;
+}
+
+Button {
+    min-width: 16;
+    margin: 1 2;
+}
+
+CreateEntryScreen {
+    align: center middle;
+}
+
+/* Button styles */
+Button:hover {
+    background: #4a4a4a;
+    color: #ffffff;
+}
+
+/* Entry card styles */
+.entry-card {
+    width: 100%;
+    height: auto;
+    padding: 1;
+    margin: 1;
+    border: solid #3a3a3a;
+}
+
+.entry-title {
+    width: 100%;
+    padding: 1;
+    text-style: bold;
+    background: #3a3a3a;
+    color: #ffffff;
+}
+
+.entry-section {
+    width: 100%;
+    height: auto;
+    padding: 1;
+    margin: 1;
+}
+
+.section-header {
+    width: 100%;
+    padding: 1;
+    text-style: bold;
+}
+
+.section-content {
+    width: 100%;
+    height: auto;
+    padding: 1;
+    margin: 1;
+}
+
+/* Welcome screen styles */
+#welcome-container {
+    width: 100%;
+    height: 100%;
+    layout: vertical;
+    align: center middle;
+    padding: 2;
+    background: #2a2a2a;
+}
+
+.welcome-logo {
+    width: 100%;
+    content-align: center middle;
+    margin-bottom: 1;
+}
+
+.welcome-version {
+    width: 100%;
+    content-align: center middle;
+    margin: 1 0;
+}
+
+.welcome-spacer {
+    height: 1;
+}
+
+.welcome-primary-actions,
+.welcome-secondary-actions,
+.welcome-tertiary-actions {
+    width: 100%;
+    max-width: 50;
+    content-align: left middle;
+    margin: 1 0;
+    padding: 0 2;
+}
+
+/* Override base screen layout for welcome screen */
+WelcomeScreen {
+    layout: grid;
+    grid-size: 1;
+    grid-rows: 1fr;
+    padding: 0;
+    background: #2a2a2a;
+}
+
+/* Add styles for the table-like layout */
+.welcome-text {
+    text-style: none;
+}
+
+.welcome-text .feature {
+    color: #ffffff;
+    width: 20;
+    padding-right: 2;
+}
+
+.welcome-text .description {
+    color: #aaaaaa;
+    width: 40;
+    padding-right: 2;
+}
+
+.welcome-text .key-binding {
+    color: #ffaa00;
+    text-style: bold;
+    width: 10;
+}
+
+.settings-container {
+    width: 100%;
+    height: 100%;
+    padding: 2;
+    background: #2a2a2a;
+}
+
+.settings-group {
+    width: 100%;
+    margin: 1 0;
+    padding: 2;
+    border: tall #3a3a3a;
+    background: #1a1a1a;
+}
+
+.settings-group Label {
+    margin-top: 2;
+    margin-bottom: 1;
+    color: #ffffff;
+    text-style: bold;
+}
+
+.settings-group Input {
+    width: 100%;
+    margin-bottom: 2;
+}
+
+.settings-group RadioSet {
+    width: 100%;
+    margin: 1 0;
+    padding: 1;
+    background: #2a2a2a;
+}
+
+#theme-selector {
+    margin-bottom: 2;
+}
+
+#backup-frequency {
+    margin-bottom: 2;
+}
+
+#save-settings {
+    margin-top: 2;
+    width: 100%;
+    background: #2d5a27;
+}
+
+#save-settings:hover {
+    background: #3a6a34;
+}
+
+.scrollable {
+    height: 10;
+    overflow: auto;
+} 
