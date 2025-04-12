@@ -33,7 +33,7 @@ Terminal Journal is a terminal-based journaling application that allows users to
 
 3. Run the application:
    ```bash
-   python main.py
+   python app.py
    ```
 
 ---
@@ -42,7 +42,7 @@ Terminal Journal is a terminal-based journaling application that allows users to
 
 1. Launch the application:
    ```bash
-   python main.py
+   python app.py
    ```
 
 2. Use the interactive TUI to:
@@ -99,7 +99,7 @@ Terminal Journal is a terminal-based journaling application that allows users to
 
 5. Run the application in development mode:
    ```bash
-   python main.py
+   python app.py
    ```
 
 ---
@@ -148,12 +148,12 @@ For questions or feedback, please reach out to [your-email@example.com](mailto:y
 ## 🖼️ Screenshots
 
 ### Main Menu
-![Main Menu](https://via.placeholder.com/800x400?text=Main+Menu)
+![Main Menu](/images/mainmenu.jpg)
 
 ### Calendar View
-![Calendar View](https://via.placeholder.com/800x400?text=Calendar+View)
+![Calendar View](/images/calendarview.jpg)
 
 ### Create Entry
-![Create Entry](https://via.placeholder.com/800x400?text=Create+Entry)
+![Create Entry](/images/createentry.jpg)
 
 ---
