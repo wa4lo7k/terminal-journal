@@ -120,4 +120,7 @@ if search_query:
 backup = input("Do you want to back up your journal to GitHub? (y/n): ").strip().lower()
 if backup == 'y':
     backup_to_github()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0b5dcf5d2a6e0836d3cd3ea865d246ae7a9bb0ee
