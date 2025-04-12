@@ -148,12 +148,12 @@ For questions or feedback, please reach out to [your-email@example.com](mailto:w
 ## 🖼️ Screenshots
 
 ### Main Menu
-![Main Menu](/images/mainmenu.jpg)
+![Main Menu](/images/main-menu.jpg)
 
 ### Calendar View
-![Calendar View](/images/calendarview.jpg)
+![Calendar View](/images/calendar-view.jpg)
 
 ### Create Entry
-![Create Entry](/images/createentry.jpg)
+![Create Entry](/images/create-entry.jpg)
 
 ---
